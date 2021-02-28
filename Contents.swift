@@ -193,101 +193,66 @@ class TimeDB{
         self.seconds = UInt(days.component(.second, from: date))
     }
     
-    func allTime() -> String {
-        var hour = self.hour
-        var dayType: String
-        if (hour % 12 == 0){
-            if (hour >= 12) {
-                dayType = "PM"
-            }
-            else {
-                dayType = "AM"
-            }
-            hour = 12
-        } else if (hour > 12){
-            hour = hour % 12
-            dayType = "PM"
-        } else {
-            hour = hour % 12
-            dayType = "AM"
-        }
-        return "\(hour):\(self.minute):\(self.seconds) " + dayType
+    func styleDate() -> Date {
+        let stDate = DateFormatter()
+        stDate.dateFormat = "HH:mm:ss"
+        return stDate.date(from: "\(hour):\(minute):\(seconds)")!
+    }
+    
+    func timeToString() -> String {
+        let stDate = DateFormatter()
+        stDate.dateFormat = "hh:mm:ss a"
+        return stDate.string(from: styleDate())
     }
 
     func sumTime(defaultTime: TimeDB) -> TimeDB {
-        let second = defaultTime.seconds + self.seconds
-        let hour = defaultTime.hour + self.hour
-        let minute = defaultTime.minute + self.minute
-        return TimeDB(hour: hour % 24 + minute / 60,
-                      minute: minute % 60 + seconds / 60,
-                      seconds: second % 60)
+        let stDate = DateFormatter()
+        stDate.dateFormat = "HH:mm:ss"
+        var tempDate = self.styleDate()
+        tempDate.addTimeInterval(defaultTime.styleDate().timeIntervalSince(stDate.date(from: "00:00:00")!))
+        return TimeDB(date: tempDate)
     }
 
     func diffTime(defaultTime: TimeDB) -> TimeDB {
-        var hour = Int(self.hour) - Int(defaultTime.hour)
-        var minute = Int(self.minute) - Int(defaultTime.minute)
-        var second = Int(self.seconds) - Int(defaultTime.seconds)
-        if (minute < 0) {
-            minute += 60
-            hour += 1
-        }
-        if (second < 0) {
-            second += 60
-            minute += 1
-        }
-        if (hour < 0){
-            hour += 24
-        }
-        return TimeDB(hour: UInt(hour),
-                      minute: UInt(minute),
-                      seconds: UInt(second))
+        let stDate = DateFormatter()
+        stDate.dateFormat = "HH:mm:ss"
+        var tempDate = self.styleDate()
+        tempDate.addTimeInterval(-defaultTime.styleDate().timeIntervalSince(stDate.date(from: "00:00:00")!))
+        return TimeDB(date: tempDate)
     }
     
    class func sumTime2(T1: TimeDB, T2: TimeDB) -> TimeDB {
-        let hour = T1.hour + T2.hour
-        let minute = T1.minute + T2.minute
-        let second = T1.seconds + T2.seconds
-        return TimeDB(hour: hour % 24 + minute / 60,
-                      minute: minute % 60 + second / 60,
-                      seconds: second % 60)
+        let stDate = DateFormatter()
+        stDate.dateFormat = "HH:mm:ss"
+        var tempDate = T2.styleDate()
+        tempDate.addTimeInterval(T1.styleDate().timeIntervalSince(stDate.date(from: "00:00:00")!))
+        return TimeDB(date: tempDate)
     }
 
    class func diffTime2(T1: TimeDB, T2: TimeDB) -> TimeDB {
-        var hour = Int(T1.hour) - Int(T2.hour)
-        var minute = Int(T1.minute) - Int(T2.minute)
-        var second = Int(T1.seconds) - Int(T2.seconds)
-        if (minute < 0) {
-            minute += 60
-            hour += 1
-        }
-        if (second < 0) {
-            second += 60
-            minute += 1
-        }
-        if (hour < 0){
-            hour += 24
-        }
-        return TimeDB(hour: UInt(hour),
-                      minute: UInt(minute),
-                      seconds: UInt(second))
+        let stDate = DateFormatter()
+        stDate.dateFormat = "HH:mm:ss"
+        var tempDate = T1.styleDate()
+        tempDate.addTimeInterval(-T2.styleDate().timeIntervalSince(stDate.date(from: "00:00:00")!))
+        return TimeDB(date: tempDate)
     }
 
 }
 
 var T0 = TimeDB()
-var T1 = TimeDB(hour: 22, minute: 12, seconds: 24)
-var T2 = TimeDB(hour: 12, minute: 32, seconds: 52)
+var T1 = TimeDB(hour: 0, minute: 0, seconds: 0)
+var T2 = TimeDB(hour: 0, minute: 0, seconds: 1)
 var T3 = TimeDB(hour: 4, minute: 59, seconds: 1)
-print("T0 -> ", T0.allTime())
-print("T1 -> ", T1.allTime())
-print("T2 -> ", T2.allTime())
-print("T3 -> ", T3.allTime())
+print("T0 -> ", T0.timeToString())
+print("T1 -> ", T1.timeToString())
+print("T2 -> ", T2.timeToString())
+print("T3 -> ", T3.timeToString())
 print()
-print("T2 + T3 -> ", T2.sumTime(defaultTime: T3).allTime())
-print("T1 - T2 -> ", T1.diffTime(defaultTime: T2).allTime())
-print("T1 + T2 -> ", T1.sumTime(defaultTime: T2).allTime())
-print("T2 - T1 -> ", T2.diffTime(defaultTime: T1).allTime())
+print("T2 + T3 -> ", T2.sumTime(defaultTime: T3).timeToString())
+print("T1 - T2 -> ", T1.diffTime(defaultTime: T2).timeToString())
+print("T1 + T2 -> ", T1.sumTime(defaultTime: T2).timeToString())
+print("T2 - T1 -> ", T2.diffTime(defaultTime: T1).timeToString())
 
-print("T2 + T3 -> ", TimeDB.sumTime2(T1: T2, T2: T3).allTime())
-print("T1 - T2 -> ", TimeDB.diffTime2(T1: T1, T2: T2).allTime())
+print("T2 + T3 -> ", TimeDB.sumTime2(T1: T2, T2: T3).timeToString())
+print("T1 - T2 -> ", TimeDB.diffTime2(T1: T1, T2: T2).timeToString())
 
