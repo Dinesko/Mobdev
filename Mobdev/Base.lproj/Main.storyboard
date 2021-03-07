@@ -8,21 +8,101 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Graph-->
         <scene sceneID="MVM-WJ-vhU">
             <objects>
-                <viewController id="ma0-wl-Ybq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tab2ViewController" id="ma0-wl-Ybq" customClass="Tab2ViewController" customModule="Mobdev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUf-LZ-jbc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SHy-cc-U7M">
+                                <rect key="frame" x="0.0" y="206.5" width="414" height="444"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JlR-tZ-JPq">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="q5e-3h-w3P"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Chart"/>
+                                            <segment title="Graph"/>
+                                        </segments>
+                                        <color key="selectedSegmentTintColor" red="0.04196592577460672" green="0.52666945684523814" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segmentValueChanged:" destination="ma0-wl-Ybq" eventType="valueChanged" id="nUm-9Y-Qg8"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHY-Lq-ozD">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="414"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B83-7N-gEo" customClass="ChartView" customModule="Mobdev" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crY-Pm-Av1" customClass="GraphView" customModule="Mobdev" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="crY-Pm-Av1" secondAttribute="bottom" id="17Z-5Q-TIz"/>
+                                            <constraint firstAttribute="trailing" secondItem="B83-7N-gEo" secondAttribute="trailing" id="7NU-CZ-f12"/>
+                                            <constraint firstAttribute="bottom" secondItem="B83-7N-gEo" secondAttribute="bottom" id="US0-n7-f5R"/>
+                                            <constraint firstAttribute="trailing" secondItem="crY-Pm-Av1" secondAttribute="trailing" id="Uvq-zG-zUQ"/>
+                                            <constraint firstItem="B83-7N-gEo" firstAttribute="top" secondItem="dHY-Lq-ozD" secondAttribute="top" id="b5f-WM-EG2"/>
+                                            <constraint firstItem="B83-7N-gEo" firstAttribute="leading" secondItem="dHY-Lq-ozD" secondAttribute="leading" id="g9S-NY-oAa"/>
+                                            <constraint firstItem="crY-Pm-Av1" firstAttribute="top" secondItem="dHY-Lq-ozD" secondAttribute="top" id="gtm-hZ-fZH"/>
+                                            <constraint firstItem="crY-Pm-Av1" firstAttribute="leading" secondItem="dHY-Lq-ozD" secondAttribute="leading" id="nPR-b8-FyV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SHy-cc-U7M" secondAttribute="height" multiplier="1:1" constant="-30" id="tEH-b0-6b1"/>
+                                </constraints>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="tEH-b0-6b1"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SaW-Eb-Vlh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SHy-cc-U7M" firstAttribute="top" secondItem="SaW-Eb-Vlh" secondAttribute="top" id="2Vp-qm-3Qj"/>
+                            <constraint firstItem="SHy-cc-U7M" firstAttribute="leading" secondItem="SaW-Eb-Vlh" secondAttribute="leading" id="8oG-av-shK"/>
+                            <constraint firstItem="SHy-cc-U7M" firstAttribute="centerY" secondItem="SaW-Eb-Vlh" secondAttribute="centerY" id="AlQ-Lt-jgM"/>
+                            <constraint firstItem="SHy-cc-U7M" firstAttribute="centerX" secondItem="SaW-Eb-Vlh" secondAttribute="centerX" id="IX8-x6-7su"/>
+                            <constraint firstItem="SaW-Eb-Vlh" firstAttribute="trailing" secondItem="SHy-cc-U7M" secondAttribute="trailing" id="Pdv-hK-epk"/>
+                            <constraint firstItem="SaW-Eb-Vlh" firstAttribute="bottom" secondItem="SHy-cc-U7M" secondAttribute="bottom" id="yEL-hW-gCe"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2Vp-qm-3Qj"/>
+                                <exclude reference="yEL-hW-gCe"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Pdv-hK-epk"/>
+                                <include reference="2Vp-qm-3Qj"/>
+                                <exclude reference="8oG-av-shK"/>
+                                <include reference="yEL-hW-gCe"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="xaV-yG-Gr9"/>
+                    <tabBarItem key="tabBarItem" title="Graph" image="paintbrush" catalog="system" id="xaV-yG-Gr9"/>
+                    <connections>
+                        <outlet property="chartView" destination="B83-7N-gEo" id="hg2-1V-fle"/>
+                        <outlet property="graphView" destination="crY-Pm-Av1" id="3JJ-kG-fw4"/>
+                        <outlet property="mainView" destination="dHY-Lq-ozD" id="buN-k0-i8k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbx-yZ-QHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387" y="176"/>
+            <point key="canvasLocation" x="387" y="295"/>
         </scene>
         <!--Data-->
         <scene sceneID="bFj-F6-70B">
@@ -75,6 +155,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paintbrush" catalog="system" width="122" height="128"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
