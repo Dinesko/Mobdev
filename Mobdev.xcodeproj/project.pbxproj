@@ -10,6 +10,12 @@
 		5F8E599C25F503850043A990 /* Tab2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E599B25F503850043A990 /* Tab2ViewController.swift */; };
 		5F8E59A025F503980043A990 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E599F25F503980043A990 /* ChartView.swift */; };
 		5F8E59A325F503A30043A990 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E59A225F503A30043A990 /* GraphView.swift */; };
+		5F8E59A625F514270043A990 /* Tab3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E59A525F514270043A990 /* Tab3ViewController.swift */; };
+		5F8E59A925F514950043A990 /* MoviesList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E59A825F514950043A990 /* MoviesList.txt */; };
+		5F8E59AE25F515870043A990 /* FilmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E59AC25F515870043A990 /* FilmTableViewCell.xib */; };
+		5F8E59AF25F515870043A990 /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E59AD25F515870043A990 /* FilmTableViewCell.swift */; };
+		5F8E59B325F515AD0043A990 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E59B225F515AD0043A990 /* Movie.swift */; };
+		5F8E59B625F5161B0043A990 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E59B525F5161B0043A990 /* Movies.swift */; };
 		92DA353625D47FA900259A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA353525D47FA900259A78 /* AppDelegate.swift */; };
 		92DA353825D47FA900259A78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA353725D47FA900259A78 /* SceneDelegate.swift */; };
 		92DA353A25D47FA900259A78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA353925D47FA900259A78 /* ViewController.swift */; };
@@ -22,6 +28,12 @@
 		5F8E599B25F503850043A990 /* Tab2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2ViewController.swift; sourceTree = "<group>"; };
 		5F8E599F25F503980043A990 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		5F8E59A225F503A30043A990 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		5F8E59A525F514270043A990 /* Tab3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3ViewController.swift; sourceTree = "<group>"; };
+		5F8E59A825F514950043A990 /* MoviesList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoviesList.txt; sourceTree = "<group>"; };
+		5F8E59AC25F515870043A990 /* FilmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmTableViewCell.xib; sourceTree = "<group>"; };
+		5F8E59AD25F515870043A990 /* FilmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
+		5F8E59B225F515AD0043A990 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		5F8E59B525F5161B0043A990 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		92DA353225D47FA900259A78 /* Mobdev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobdev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DA353525D47FA900259A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92DA353725D47FA900259A78 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,8 +86,28 @@
 		5F8E599A25F5030F0043A990 /* Tab3 */ = {
 			isa = PBXGroup;
 			children = (
+				5F8E59A525F514270043A990 /* Tab3ViewController.swift */,
+				5F8E59AB25F515870043A990 /* FilmTableViewCell */,
 			);
 			path = Tab3;
+			sourceTree = "<group>";
+		};
+		5F8E59AB25F515870043A990 /* FilmTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F8E59AC25F515870043A990 /* FilmTableViewCell.xib */,
+				5F8E59AD25F515870043A990 /* FilmTableViewCell.swift */,
+			);
+			path = FilmTableViewCell;
+			sourceTree = "<group>";
+		};
+		5F8E59B125F515A50043A990 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F8E59B525F5161B0043A990 /* Movies.swift */,
+				5F8E59B225F515AD0043A990 /* Movie.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		92DA352925D47FA900259A78 = {
@@ -99,8 +131,10 @@
 			children = (
 				92DA353525D47FA900259A78 /* AppDelegate.swift */,
 				92DA353725D47FA900259A78 /* SceneDelegate.swift */,
+				5F8E59B125F515A50043A990 /* Models */,
 				5F8E599725F502F00043A990 /* Modules */,
 				92DA353B25D47FA900259A78 /* Main.storyboard */,
+				5F8E59A825F514950043A990 /* MoviesList.txt */,
 				92DA353E25D47FB100259A78 /* Assets.xcassets */,
 				92DA354025D47FB100259A78 /* LaunchScreen.storyboard */,
 				92DA354325D47FB100259A78 /* Info.plist */,
@@ -165,9 +199,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F8E59AE25F515870043A990 /* FilmTableViewCell.xib in Resources */,
 				92DA354225D47FB100259A78 /* LaunchScreen.storyboard in Resources */,
 				92DA353F25D47FB100259A78 /* Assets.xcassets in Resources */,
 				92DA353D25D47FA900259A78 /* Main.storyboard in Resources */,
+				5F8E59A925F514950043A990 /* MoviesList.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,10 +214,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F8E59B625F5161B0043A990 /* Movies.swift in Sources */,
 				92DA353A25D47FA900259A78 /* ViewController.swift in Sources */,
 				92DA353625D47FA900259A78 /* AppDelegate.swift in Sources */,
+				5F8E59B325F515AD0043A990 /* Movie.swift in Sources */,
 				92DA353825D47FA900259A78 /* SceneDelegate.swift in Sources */,
 				5F8E59A025F503980043A990 /* ChartView.swift in Sources */,
+				5F8E59A625F514270043A990 /* Tab3ViewController.swift in Sources */,
+				5F8E59AF25F515870043A990 /* FilmTableViewCell.swift in Sources */,
 				5F8E599C25F503850043A990 /* Tab2ViewController.swift in Sources */,
 				5F8E59A325F503A30043A990 /* GraphView.swift in Sources */,
 			);

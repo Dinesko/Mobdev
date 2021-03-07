@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,7 +29,7 @@
                                             <segment title="Chart"/>
                                             <segment title="Graph"/>
                                         </segments>
-                                        <color key="selectedSegmentTintColor" red="0.04196592577460672" green="0.52666945684523814" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="selectedSegmentTintColor" name="AccentColor"/>
                                         <connections>
                                             <action selector="segmentValueChanged:" destination="ma0-wl-Ybq" eventType="valueChanged" id="nUm-9Y-Qg8"/>
                                         </connections>
@@ -102,7 +103,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbx-yZ-QHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387" y="295"/>
+            <point key="canvasLocation" x="387" y="278"/>
+        </scene>
+        <!--Mooovies-->
+        <scene sceneID="LGo-tN-kZg">
+            <objects>
+                <viewController storyboardIdentifier="Tab3ViewController" id="cFr-lY-0Iq" customClass="Tab3ViewController" customModule="Mobdev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NdC-na-AlP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YHk-mt-GHq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bkg-Xm-Fkh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YHk-mt-GHq" firstAttribute="top" secondItem="NdC-na-AlP" secondAttribute="top" id="3YB-gY-Hv2"/>
+                            <constraint firstItem="YHk-mt-GHq" firstAttribute="leading" secondItem="bkg-Xm-Fkh" secondAttribute="leading" id="Ok7-Bu-o9N"/>
+                            <constraint firstItem="bkg-Xm-Fkh" firstAttribute="trailing" secondItem="YHk-mt-GHq" secondAttribute="trailing" id="QRX-ZQ-9Xx"/>
+                            <constraint firstAttribute="bottom" secondItem="YHk-mt-GHq" secondAttribute="bottom" id="Yon-Oz-ajB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mooovies" id="5xc-yx-gLw"/>
+                    <connections>
+                        <outlet property="tableView" destination="YHk-mt-GHq" id="kbc-wG-Z1w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQG-g9-rvy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1297.1014492753625" y="1042.6339285714284"/>
         </scene>
         <!--Data-->
         <scene sceneID="bFj-F6-70B">
@@ -143,20 +175,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="AccentColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="wod-Jo-YBQ" kind="relationship" relationship="viewControllers" id="9tN-7b-lG2"/>
                         <segue destination="ma0-wl-Ybq" kind="relationship" relationship="viewControllers" id="N0B-J1-uUe"/>
+                        <segue destination="BWN-Qp-iLc" kind="relationship" relationship="viewControllers" id="s7h-tz-j3o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDI-jz-dbW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-503" y="-128"/>
+            <point key="canvasLocation" x="-681" y="633"/>
+        </scene>
+        <!--Mooovies-->
+        <scene sceneID="9hJ-ym-WCl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BWN-Qp-iLc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Mooovies" image="film.fill" catalog="system" id="cqo-hq-cef"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tEX-rP-1NR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="AccentColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cFr-lY-0Iq" kind="relationship" relationship="rootViewController" id="6Ha-eZ-hmm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pf5-Lq-fAx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386.95652173913044" y="1042.6339285714284"/>
         </scene>
     </scenes>
     <resources>
+        <image name="film.fill" catalog="system" width="128" height="93"/>
         <image name="paintbrush" catalog="system" width="122" height="128"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.32345747947692871" green="0.75369495153427124" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
