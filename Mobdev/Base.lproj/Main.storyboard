@@ -81,16 +81,16 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="2Vp-qm-3Qj"/>
                                 <exclude reference="yEL-hW-gCe"/>
+                                <exclude reference="2Vp-qm-3Qj"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <exclude reference="Pdv-hK-epk"/>
+                                <include reference="yEL-hW-gCe"/>
                                 <include reference="2Vp-qm-3Qj"/>
                                 <exclude reference="8oG-av-shK"/>
-                                <include reference="yEL-hW-gCe"/>
                             </mask>
                         </variation>
                     </view>
@@ -135,6 +135,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQG-g9-rvy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297.1014492753625" y="1042.6339285714284"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="6NP-UF-tdJ">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailViewController" id="ng5-1u-j8e" customClass="MovieDetailViewController" customModule="Mobdev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YQV-O2-05X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bLt-aT-XW5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="z79-EP-N8c">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8aD-4v-VdK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bLt-aT-XW5" firstAttribute="top" secondItem="8aD-4v-VdK" secondAttribute="top" id="AZF-fH-kTv"/>
+                            <constraint firstItem="8aD-4v-VdK" firstAttribute="trailing" secondItem="bLt-aT-XW5" secondAttribute="trailing" id="KlW-NY-c2L"/>
+                            <constraint firstItem="bLt-aT-XW5" firstAttribute="leading" secondItem="8aD-4v-VdK" secondAttribute="leading" id="KtU-ad-n2M"/>
+                            <constraint firstItem="8aD-4v-VdK" firstAttribute="bottom" secondItem="bLt-aT-XW5" secondAttribute="bottom" id="nbu-NV-WXe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="posterImageView" destination="z79-EP-N8c" id="ohW-wk-ERa"/>
+                        <outlet property="tableView" destination="bLt-aT-XW5" id="bKz-h7-fGb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n5D-jb-PzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2207.2463768115945" y="1041.9642857142858"/>
         </scene>
         <!--Data-->
         <scene sceneID="bFj-F6-70B">
@@ -215,7 +250,7 @@
         <image name="paintbrush" catalog="system" width="122" height="128"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
-            <color red="0.32345747947692871" green="0.75369495153427124" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.32300001382827759" green="0.75400000810623169" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

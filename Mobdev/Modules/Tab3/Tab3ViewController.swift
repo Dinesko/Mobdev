@@ -44,6 +44,34 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
         return []
     }
     
+    func getMovie(with id: String) -> Movie? {
+        
+        guard !id.isEmpty else {
+            return nil
+        }
+        
+        do {
+            if let path = Bundle.main.path(forResource: id, ofType: "txt"),
+               let jsonData = try String(contentsOfFile: path, encoding: String.Encoding.utf8).data(using: .utf8) {
+                
+                let decodedData = try JSONDecoder().decode(Movie.self, from: jsonData)
+                return decodedData
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedId = movies[indexPath.row].imdbID
+        
+        if let selectedMovie = getMovie(with: selectedId) {
+            let controller = MovieDetailViewController.create(with: selectedMovie)
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
