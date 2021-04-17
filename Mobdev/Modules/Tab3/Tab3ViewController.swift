@@ -17,7 +17,6 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         setupTableView()
-        
     }
     
     func setupTableView() {
