@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -71,7 +71,7 @@
                     <constraint firstItem="DmX-z6-H6R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="03u-z7-jwt"/>
                     <constraint firstItem="gON-R0-k44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ih3-Pq-4rM"/>
                     <constraint firstItem="gON-R0-k44" firstAttribute="centerY" secondItem="DmX-z6-H6R" secondAttribute="centerY" id="OHS-RD-VGd"/>
-                    <constraint firstAttribute="bottom" secondItem="DmX-z6-H6R" secondAttribute="bottom" constant="8" id="Qr6-4n-nn2"/>
+                    <constraint firstAttribute="bottom" secondItem="DmX-z6-H6R" secondAttribute="bottom" priority="999" constant="8" id="Qr6-4n-nn2"/>
                     <constraint firstAttribute="trailing" secondItem="DmX-z6-H6R" secondAttribute="trailing" constant="8" id="cGC-bM-OI0"/>
                     <constraint firstItem="DmX-z6-H6R" firstAttribute="leading" secondItem="gON-R0-k44" secondAttribute="trailing" constant="8" id="vh1-Z2-T2T"/>
                 </constraints>

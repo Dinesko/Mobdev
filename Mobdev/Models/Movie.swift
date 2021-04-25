@@ -51,28 +51,35 @@ struct Movie: Codable {
             return UIImage(named: poster)!
         }
     }
+}
+
+extension Movie {
     
-    var fullInfo: [(field: String, value: String)] {
-        
+    struct FiledValue {
+        var field: String
+        var value: String
+    }
+    
+    var generatedFieldValues: [FiledValue] {
         return [
-            (field: "Title", value: title),
-            (field: "Year", value: year),
-            (field: "imdbID", value: imdbID),
-            (field: "type", value: type),
-            (field: "rated", value: rated ?? "No info"),
-            (field: "released", value: released ?? "No info"),
-            (field: "production", value: production ?? "No info"),
-            (field: "runtime", value: runtime ?? "No info"),
-            (field: "genre", value: genre ?? "No info"),
-            (field: "director", value: director ?? "No info"),
-            (field: "writer", value: writer ?? "No info"),
-            (field: "actors", value: actors ?? "No info"),
-            (field: "plot", value: plot ?? "No info"),
-            (field: "language", value: language ?? "No info"),
-            (field: "country", value: country ?? "No info"),
-            (field: "awards", value: awards ?? "No info"),
-            (field: "imdbRating", value: imdbRating ?? "No info"),
-            (field: "imdbVotes", value: imdbVotes ?? "No info"),
+            FiledValue(field: "Title:", value: title),
+            FiledValue(field: "Year:", value: year),
+            FiledValue(field: "imdbID:", value: imdbID),
+            FiledValue(field: "Type:", value: type),
+            FiledValue(field: "Rated:", value: rated ?? "No info"),
+            FiledValue(field: "Released:", value: released ?? "No info"),
+            FiledValue(field: "Production:", value: production ?? "No info"),
+            FiledValue(field: "Runtime:", value: runtime ?? "No info"),
+            FiledValue(field: "Genre:", value: genre ?? "No info"),
+            FiledValue(field: "Director:", value: director ?? "No info"),
+            FiledValue(field: "Writer:", value: writer ?? "No info"),
+            FiledValue(field: "Actors:", value: actors ?? "No info"),
+            FiledValue(field: "Plot:", value: plot ?? "No info"),
+            FiledValue(field: "Language:", value: language ?? "No info"),
+            FiledValue(field: "Country:", value: country ?? "No info"),
+            FiledValue(field: "Awards:", value: awards ?? "No info"),
+            FiledValue(field: "imdbRating:", value: imdbRating ?? "No info"),
+            FiledValue(field: "imdbVotes:", value: imdbVotes ?? "No info"),
         ]
     }
 }

@@ -2,7 +2,7 @@
 //  MovieDetailTableViewCell.swift
 //  Mobdev
 //
-//  Created by Denys Danyliuk on 17.04.2021.
+//  Created by Denis on 17.04.2021.
 //
 
 import UIKit
@@ -18,9 +18,9 @@ class MovieDetailTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func configure(field: String, value: String) {
+    public func configure(data: Movie.FiledValue) {
         
-        fieldLabel.text = field
-        valueLabel.text = value
+        fieldLabel.text = data.field
+        valueLabel.text = data.value
     }
 }

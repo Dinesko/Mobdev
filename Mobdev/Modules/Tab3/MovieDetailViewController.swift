@@ -2,7 +2,7 @@
 //  MovieDetailViewController.swift
 //  Mobdev
 //
-//  Created by Denys Danyliuk on 17.04.2021.
+//  Created by Denis on 17.04.2021.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ class MovieDetailViewController: UIViewController {
     
     static func create(with movie: Movie) -> MovieDetailViewController {
         
-        let controller = UIStoryboard(name: "Main", bundle: Bundle.main) .instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+        let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
         controller.movie = movie
         return controller
     }
@@ -20,10 +20,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     
     var movie: Movie!
+    var movieData: [Movie.FiledValue] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        movieData = movie.generatedFieldValues
+        posterImageView.layer.cornerRadius = 16
         posterImageView.image = movie.getPosterImage()
         tableView.register(UINib(nibName: "MovieDetailTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MovieDetailTableViewCell")
         tableView.delegate = self
@@ -33,9 +36,13 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Film info"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return movie.fullInfo.count
+        return movieData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,9 +51,8 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
         
-        let data = movie.fullInfo[indexPath.row]
-        
-        cell.configure(field: data.field, value: data.value)
+        let data = movieData[indexPath.row]
+        cell.configure(data: data)
         
         return cell
     }

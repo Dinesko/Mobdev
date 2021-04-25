@@ -20,6 +20,7 @@
 		5F3ECA18262B453400AE9FA1 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ECA17262B453400AE9FA1 /* MovieDetailViewController.swift */; };
 		5F3ECA1E262B49AE00AE9FA1 /* MovieDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ECA1C262B49AE00AE9FA1 /* MovieDetailTableViewCell.swift */; };
 		5F3ECA1F262B49AE00AE9FA1 /* MovieDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F3ECA1D262B49AE00AE9FA1 /* MovieDetailTableViewCell.xib */; };
+		5F7BA7902635C90A00A29DCE /* AddMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7BA78F2635C90A00A29DCE /* AddMovieViewController.swift */; };
 		5F8E599C25F503850043A990 /* Tab2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E599B25F503850043A990 /* Tab2ViewController.swift */; };
 		5F8E59A025F503980043A990 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E599F25F503980043A990 /* ChartView.swift */; };
 		5F8E59A325F503A30043A990 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E59A225F503A30043A990 /* GraphView.swift */; };
@@ -51,6 +52,7 @@
 		5F3ECA17262B453400AE9FA1 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		5F3ECA1C262B49AE00AE9FA1 /* MovieDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailTableViewCell.swift; sourceTree = "<group>"; };
 		5F3ECA1D262B49AE00AE9FA1 /* MovieDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailTableViewCell.xib; sourceTree = "<group>"; };
+		5F7BA78F2635C90A00A29DCE /* AddMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewController.swift; sourceTree = "<group>"; };
 		5F8E599B25F503850043A990 /* Tab2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2ViewController.swift; sourceTree = "<group>"; };
 		5F8E599F25F503980043A990 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		5F8E59A225F503A30043A990 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				5F8E59A525F514270043A990 /* Tab3ViewController.swift */,
 				5F3ECA17262B453400AE9FA1 /* MovieDetailViewController.swift */,
+				5F7BA78F2635C90A00A29DCE /* AddMovieViewController.swift */,
 				5F3ECA1B262B495100AE9FA1 /* MovieDetailTableViewCell */,
 				5F8E59AB25F515870043A990 /* FilmTableViewCell */,
 			);
@@ -149,8 +152,8 @@
 		5F8E59AB25F515870043A990 /* FilmTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				5F8E59AC25F515870043A990 /* FilmTableViewCell.xib */,
 				5F8E59AD25F515870043A990 /* FilmTableViewCell.swift */,
+				5F8E59AC25F515870043A990 /* FilmTableViewCell.xib */,
 			);
 			path = FilmTableViewCell;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				92DA353625D47FA900259A78 /* AppDelegate.swift in Sources */,
 				5F3ECA1E262B49AE00AE9FA1 /* MovieDetailTableViewCell.swift in Sources */,
 				5F8E59B325F515AD0043A990 /* Movie.swift in Sources */,
+				5F7BA7902635C90A00A29DCE /* AddMovieViewController.swift in Sources */,
 				92DA353825D47FA900259A78 /* SceneDelegate.swift in Sources */,
 				5F8E59A025F503980043A990 /* ChartView.swift in Sources */,
 				5F8E59A625F514270043A990 /* Tab3ViewController.swift in Sources */,

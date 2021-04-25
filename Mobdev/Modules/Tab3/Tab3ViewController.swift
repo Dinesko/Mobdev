@@ -24,11 +24,10 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(UINib(nibName: "FilmTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "FilmTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        movies = getMovies()
-        tableView.reloadData()
+        movies = getAllMovies()
     }
     
-    func getMovies() -> [Movie] {
+    func getAllMovies() -> [Movie] {
         
         do {
             if let path = Bundle.main.path(forResource: "MoviesList", ofType: "txt"),
@@ -86,5 +85,29 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.configure(with: movies[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            movies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
+        
+        let controller = AddMovieViewController.create { movie in
+            
+            self.movies.append(movie)
+            self.tableView.reloadData()
+        }
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
