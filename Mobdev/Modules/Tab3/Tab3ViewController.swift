@@ -7,24 +7,32 @@
 
 import UIKit
 
-class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Tab3ViewController: UIViewController,
+                          UITableViewDelegate,
+                          UITableViewDataSource,
+                          UISearchResultsUpdating,
+                          UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [Movie] = []
+    var searchController: UISearchController!
+    var moviesInSearch: [Movie] = []
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupTableView()
-    }
-    
-    func setupTableView() {
         
         tableView.register(UINib(nibName: "FilmTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "FilmTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
         movies = getAllMovies()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     func getAllMovies() -> [Movie] {
@@ -64,7 +72,13 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedId = movies[indexPath.row].imdbID
+        let selectedId: String
+        
+        if isSearching {
+            selectedId = moviesInSearch[indexPath.row].imdbID
+        } else {
+            selectedId = movies[indexPath.row].imdbID
+        }
         
         if let selectedMovie = getMovie(with: selectedId) {
             let controller = MovieDetailViewController.create(with: selectedMovie)
@@ -74,7 +88,11 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return movies.count
+        if isSearching {
+            return moviesInSearch.count
+        } else {
+            return movies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,7 +101,13 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
         
-        cell.configure(with: movies[indexPath.row])
+        let movie: Movie
+        if isSearching {
+            movie = moviesInSearch[indexPath.row]
+        } else {
+            movie = movies[indexPath.row]
+        }
+        cell.configure(with: movie)
         return cell
     }
     
@@ -95,7 +119,14 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            movies.remove(at: indexPath.row)
+            if isSearching {
+                let movieToDelete = moviesInSearch.remove(at: indexPath.row)
+                movies.removeAll { movie in
+                    return movie.imdbID == movieToDelete.imdbID
+                }
+            } else {
+                movies.remove(at: indexPath.row)
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -109,5 +140,28 @@ class Tab3ViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let enteredTextLowercased = searchController.searchBar.text?.lowercased(),
+           !enteredTextLowercased.isEmpty {
+            
+            moviesInSearch = movies.filter { movie in
+                movie.title.lowercased().contains(enteredTextLowercased)
+            }
+            isSearching = true
+            tableView.reloadData()
+        } else {
+            
+            isSearching = false
+            tableView.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        isSearching = false
+        tableView.reloadData()
     }
 }
