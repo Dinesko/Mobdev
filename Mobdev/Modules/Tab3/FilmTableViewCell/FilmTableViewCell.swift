@@ -1,6 +1,6 @@
 //
 //  FilmTableViewCell.swift
-//  MobileDev
+//  Mobdev
 //
 //  Created by Denis on 11.02.2021.
 //
