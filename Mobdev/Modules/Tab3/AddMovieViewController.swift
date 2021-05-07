@@ -28,6 +28,7 @@ class AddMovieViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         addButton.layer.cornerRadius = 10
+        hideKeyboardWhenTappedAround()
     }
     
     @IBAction func didPressAdd(_ sender: UIButton) {
@@ -46,6 +47,15 @@ class AddMovieViewController: UIViewController {
         
         if year.isEmpty {
             year = "No specified."
+        }
+        
+        guard let intYear = Int(year),
+              intYear > 1800 && intYear < 2030 else {
+            
+            let alert = UIAlertController(title: "Ivalid year", message: "Change year", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
         }
         
         let movie = Movie(title: title, year: year, imdbID: UUID().uuidString, type: type, poster: "", rated: nil, released: nil, production: nil, runtime: nil, genre: nil, director: nil, writer: nil, actors: nil, plot: nil, language: nil, country: nil, awards: nil, imdbRating: nil, imdbVotes: nil)
