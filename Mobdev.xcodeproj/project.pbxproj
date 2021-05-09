@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F2E5C1C2648314800C0236A /* Tab4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E5C1B2648314800C0236A /* Tab4ViewController.swift */; };
+		5F2E5C1F264831BB00C0236A /* InstagramCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E5C1E264831BB00C0236A /* InstagramCollectionViewLayout.swift */; };
+		5F2E5C232648322A00C0236A /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E5C212648322A00C0236A /* ImageCollectionViewCell.swift */; };
+		5F2E5C242648322A00C0236A /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2E5C222648322A00C0236A /* ImageCollectionViewCell.xib */; };
+		5F2E5C262648328300C0236A /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2E5C252648328300C0236A /* CustomImagePicker.swift */; };
 		5F3ECA0B262B41E000AE9FA1 /* tt0796366.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F3ECA01262B41DF00AE9FA1 /* tt0796366.txt */; };
 		5F3ECA0C262B41E000AE9FA1 /* tt2488496.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F3ECA02262B41E000AE9FA1 /* tt2488496.txt */; };
 		5F3ECA0D262B41E000AE9FA1 /* tt0076759.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F3ECA03262B41E000AE9FA1 /* tt0076759.txt */; };
@@ -40,6 +45,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F2E5C1B2648314800C0236A /* Tab4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab4ViewController.swift; sourceTree = "<group>"; };
+		5F2E5C1E264831BB00C0236A /* InstagramCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5F2E5C212648322A00C0236A /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		5F2E5C222648322A00C0236A /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		5F2E5C252648328300C0236A /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
 		5F3ECA01262B41DF00AE9FA1 /* tt0796366.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tt0796366.txt; sourceTree = "<group>"; };
 		5F3ECA02262B41E000AE9FA1 /* tt2488496.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tt2488496.txt; sourceTree = "<group>"; };
 		5F3ECA03262B41E000AE9FA1 /* tt0076759.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tt0076759.txt; sourceTree = "<group>"; };
@@ -85,6 +95,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F2E5C1A2648312A00C0236A /* Tab4 */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E5C202648320600C0236A /* ImageViewCell */,
+				5F2E5C1D264831A600C0236A /* CollectionViewLayouts */,
+				5F2E5C1B2648314800C0236A /* Tab4ViewController.swift */,
+				5F2E5C252648328300C0236A /* CustomImagePicker.swift */,
+			);
+			path = Tab4;
+			sourceTree = "<group>";
+		};
+		5F2E5C1D264831A600C0236A /* CollectionViewLayouts */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E5C1E264831BB00C0236A /* InstagramCollectionViewLayout.swift */,
+			);
+			path = CollectionViewLayouts;
+			sourceTree = "<group>";
+		};
+		5F2E5C202648320600C0236A /* ImageViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F2E5C212648322A00C0236A /* ImageCollectionViewCell.swift */,
+				5F2E5C222648322A00C0236A /* ImageCollectionViewCell.xib */,
+			);
+			path = ImageViewCell;
+			sourceTree = "<group>";
+		};
 		5F3EC9EA262B417F00AE9FA1 /* Films */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +155,7 @@
 				5F8E599825F5030A0043A990 /* Tab1 */,
 				5F8E599925F5030C0043A990 /* Tab2 */,
 				5F8E599A25F5030F0043A990 /* Tab3 */,
+				5F2E5C1A2648312A00C0236A /* Tab4 */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -262,6 +301,7 @@
 			files = (
 				5F8E59AE25F515870043A990 /* FilmTableViewCell.xib in Resources */,
 				92DA354225D47FB100259A78 /* LaunchScreen.storyboard in Resources */,
+				5F2E5C242648322A00C0236A /* ImageCollectionViewCell.xib in Resources */,
 				5F3ECA13262B41E000AE9FA1 /* tt0121766.txt in Resources */,
 				5F3ECA1F262B49AE00AE9FA1 /* MovieDetailTableViewCell.xib in Resources */,
 				5F3ECA10262B41E000AE9FA1 /* tt3748528.txt in Resources */,
@@ -286,8 +326,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F2E5C232648322A00C0236A /* ImageCollectionViewCell.swift in Sources */,
 				5F8E59B625F5161B0043A990 /* Movies.swift in Sources */,
+				5F2E5C1F264831BB00C0236A /* InstagramCollectionViewLayout.swift in Sources */,
+				5F2E5C262648328300C0236A /* CustomImagePicker.swift in Sources */,
 				92DA353A25D47FA900259A78 /* ViewController.swift in Sources */,
+				5F2E5C1C2648314800C0236A /* Tab4ViewController.swift in Sources */,
 				92DA353625D47FA900259A78 /* AppDelegate.swift in Sources */,
 				5F3ECA1E262B49AE00AE9FA1 /* MovieDetailTableViewCell.swift in Sources */,
 				5F8E59B325F515AD0043A990 /* Movie.swift in Sources */,

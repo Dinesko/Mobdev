@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uPv-xd-z1P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uPv-xd-z1P">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -248,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwI-uh-iR1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2207" y="1716"/>
+            <point key="canvasLocation" x="3115.9420289855075" y="1715.625"/>
         </scene>
         <!--Data-->
         <scene sceneID="bFj-F6-70B">
@@ -295,6 +296,7 @@
                         <segue destination="wod-Jo-YBQ" kind="relationship" relationship="viewControllers" id="9tN-7b-lG2"/>
                         <segue destination="ma0-wl-Ybq" kind="relationship" relationship="viewControllers" id="N0B-J1-uUe"/>
                         <segue destination="BWN-Qp-iLc" kind="relationship" relationship="viewControllers" id="s7h-tz-j3o"/>
+                        <segue destination="EhK-8v-gTn" kind="relationship" relationship="viewControllers" id="IjT-rd-lbO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDI-jz-dbW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -323,11 +325,87 @@
             </objects>
             <point key="canvasLocation" x="386.95652173913044" y="1042.6339285714284"/>
         </scene>
+        <!--Instagram-->
+        <scene sceneID="rXf-Wf-NEU">
+            <objects>
+                <viewController storyboardIdentifier="Tab4ViewController" id="1hF-n7-OID" customClass="Tab4ViewController" customModule="Mobdev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e76-gz-49U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hMX-ar-6k2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G5z-sa-9VQ">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GPG-vO-ASk">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dL7-iN-jXz">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="99Y-Yr-ofu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hMX-ar-6k2" firstAttribute="top" secondItem="99Y-Yr-ofu" secondAttribute="top" id="NW9-UE-8ik"/>
+                            <constraint firstItem="99Y-Yr-ofu" firstAttribute="bottom" secondItem="hMX-ar-6k2" secondAttribute="bottom" id="VoQ-tf-CFc"/>
+                            <constraint firstItem="99Y-Yr-ofu" firstAttribute="trailing" secondItem="hMX-ar-6k2" secondAttribute="trailing" id="r6W-37-7VD"/>
+                            <constraint firstItem="hMX-ar-6k2" firstAttribute="leading" secondItem="99Y-Yr-ofu" secondAttribute="leading" id="vJf-DN-8De"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Instagram" id="0DZ-q8-9y4">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="PFK-3d-UmW">
+                            <connections>
+                                <action selector="didTapAdd:" destination="1hF-n7-OID" id="2W5-5e-JO8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="hMX-ar-6k2" id="w4y-if-rc3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tDp-HT-BaU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="387" y="2483"/>
+        </scene>
+        <!--Instagram-->
+        <scene sceneID="Vrg-Il-Auq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EhK-8v-gTn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Instagram" image="square.dashed.inset.fill" catalog="system" id="gpI-we-jsE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JES-4t-QiD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="AccentColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1hF-n7-OID" kind="relationship" relationship="rootViewController" id="vPD-fn-P52"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Plc-tm-zBS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386.95652173913044" y="1764.5089285714284"/>
+        </scene>
     </scenes>
     <resources>
         <image name="film.fill" catalog="system" width="128" height="93"/>
         <image name="paintbrush" catalog="system" width="122" height="128"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="square.dashed.inset.fill" catalog="system" width="128" height="114"/>
         <namedColor name="AccentColor">
             <color red="0.32300001382827759" green="0.75400000810623169" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
