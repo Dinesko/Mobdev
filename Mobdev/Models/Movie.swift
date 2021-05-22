@@ -42,15 +42,6 @@ struct Movie: Codable {
         case type = "Type"
         case production = "Production"
     }
-    
-    func getPosterImage() -> UIImage {
-        
-        if poster.isEmpty {
-            return UIImage(systemName: "film.fill")!
-        } else {
-            return UIImage(named: poster)!
-        }
-    }
 }
 
 extension Movie {

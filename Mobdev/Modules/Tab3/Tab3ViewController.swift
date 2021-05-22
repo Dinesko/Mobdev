@@ -13,20 +13,58 @@ class Tab3ViewController: UIViewController,
                           UISearchResultsUpdating,
                           UISearchBarDelegate {
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .white
+        activityIndicator.backgroundColor = UIColor(named: "AccentColor")
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.hidesWhenStopped = true
+
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            activityIndicator.widthAnchor.constraint(equalToConstant: 69),
+            activityIndicator.heightAnchor.constraint(equalToConstant: 69)
+        ])
+        return activityIndicator
+    }()
+    
+    lazy var placeholderLabel: UILabel = {
+        let placeholderLabel = UILabel()
+        placeholderLabel.text = "No mooovies (((((("
+        placeholderLabel.textColor = UIColor(named: "AccentColor")
+        placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(placeholderLabel)
+        NSLayoutConstraint.activate([
+            placeholderLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            placeholderLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+        ])
+        return placeholderLabel
+    }()
+    
     @IBOutlet weak var tableView: UITableView!
     
+    var omdbURLItems: URLComponents {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "www.omdbapi.com"
+        return urlComponents
+    }
+    
+    var urlSession = URLSession(configuration: .default)
     var movies: [Movie] = []
     var searchController: UISearchController!
-    var moviesInSearch: [Movie] = []
-    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        placeholderLabel.isHidden = false
+        tableView.isHidden = true
         tableView.register(UINib(nibName: "FilmTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "FilmTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        movies = getAllMovies()
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -35,64 +73,107 @@ class Tab3ViewController: UIViewController,
         navigationItem.searchController = searchController
     }
     
-    func getAllMovies() -> [Movie] {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        do {
-            if let path = Bundle.main.path(forResource: "MoviesList", ofType: "txt"),
-               let jsonData = try String(contentsOfFile: path, encoding: String.Encoding.utf8).data(using: .utf8) {
-                
-                let decodedData = try JSONDecoder().decode(Movies.self, from: jsonData)
-                return decodedData.items
-            }
-        } catch {
-            print("Error: ", error.localizedDescription)
-        }
-        
-        return []
-    }
-    
-    func getMovie(with id: String) -> Movie? {
-        
-        guard !id.isEmpty else {
-            return nil
-        }
-        
-        do {
-            if let path = Bundle.main.path(forResource: id, ofType: "txt"),
-               let jsonData = try String(contentsOfFile: path, encoding: String.Encoding.utf8).data(using: .utf8) {
-                
-                let decodedData = try JSONDecoder().decode(Movie.self, from: jsonData)
-                return decodedData
-            }
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        return nil
+        activityIndicator.layer.cornerRadius = 10
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedId: String
+        let selectedId = movies[indexPath.row].imdbID
         
-        if isSearching {
-            selectedId = moviesInSearch[indexPath.row].imdbID
-        } else {
-            selectedId = movies[indexPath.row].imdbID
+        getFullFilm(with: selectedId) { [weak self] movie in
+            let controller = MovieDetailViewController.create(with: movie)
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    func searchFilms(with name: String) {
+        
+        var omdbURLItems = omdbURLItems
+        omdbURLItems.queryItems = [
+            URLQueryItem(name: "apiKey", value: "847f01d8"),
+            URLQueryItem(name: "s", value: name),
+            URLQueryItem(name: "page", value: "1")
+        ]
+        
+        guard let url = omdbURLItems.url else {
+            return
         }
         
-        if let selectedMovie = getMovie(with: selectedId) {
-            let controller = MovieDetailViewController.create(with: selectedMovie)
-            navigationController?.pushViewController(controller, animated: true)
+        activityIndicator.startAnimating()
+        
+        urlSession
+            .dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
+                
+                print("response")
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                }
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                    
+                } else if let data = data {
+                    do {
+                        let serverResponse = try JSONDecoder().decode(Movies.self, from: data)
+                        DispatchQueue.main.async {
+                            self?.movies = serverResponse.items
+                            self?.placeholderLabel.isHidden = !serverResponse.items.isEmpty
+                            self?.tableView.isHidden = serverResponse.items.isEmpty
+                            self?.tableView.reloadData()
+                        }
+                        
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            .resume()
+    }
+    
+    func getFullFilm(with id: String, completion: @escaping (Movie) -> Void) {
+        
+        var omdbURLItems = omdbURLItems
+        omdbURLItems.queryItems = [
+            URLQueryItem(name: "apiKey", value: "847f01d8"),
+            URLQueryItem(name: "i", value: id),
+        ]
+        
+        guard let url = omdbURLItems.url else {
+            return
         }
+        
+        activityIndicator.startAnimating()
+        
+        urlSession
+            .dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
+                
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                }
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                } else if let data = data {
+                    do {
+                        let serverResponse = try JSONDecoder().decode(Movie.self, from: data)
+                        DispatchQueue.main.async {
+                            completion(serverResponse)
+                        }
+                        
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            .resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isSearching {
-            return moviesInSearch.count
-        } else {
-            return movies.count
-        }
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,67 +182,31 @@ class Tab3ViewController: UIViewController,
             return UITableViewCell()
         }
         
-        let movie: Movie
-        if isSearching {
-            movie = moviesInSearch[indexPath.row]
-        } else {
-            movie = movies[indexPath.row]
-        }
+        let movie = movies[indexPath.row]
         cell.configure(with: movie)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            if isSearching {
-                let movieToDelete = moviesInSearch.remove(at: indexPath.row)
-                movies.removeAll { movie in
-                    return movie.imdbID == movieToDelete.imdbID
-                }
-            } else {
-                movies.remove(at: indexPath.row)
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
-        
-        let controller = AddMovieViewController.create { movie in
-            
-            self.movies.append(movie)
-            self.tableView.reloadData()
-        }
-        
-        navigationController?.pushViewController(controller, animated: true)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         
         if let enteredTextLowercased = searchController.searchBar.text?.lowercased(),
-           !enteredTextLowercased.isEmpty {
+           enteredTextLowercased.count >= 3 {
             
-            moviesInSearch = movies.filter { movie in
-                movie.title.lowercased().contains(enteredTextLowercased)
-            }
-            isSearching = true
-            tableView.reloadData()
+            searchFilms(with: enteredTextLowercased)
         } else {
-            
-            isSearching = false
-            tableView.reloadData()
+            setEmpty()
         }
+    }
+    
+    func setEmpty() {
+        movies = []
+        tableView.reloadData()
+        placeholderLabel.isHidden = false
+        tableView.isHidden = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        isSearching = false
-        tableView.reloadData()
+        setEmpty()
     }
 }

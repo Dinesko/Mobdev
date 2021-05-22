@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class FilmTableViewCell: UITableViewCell {
         
@@ -30,7 +31,7 @@ final class FilmTableViewCell: UITableViewCell {
     func configure(with model: Movie) {
         
         nameLabel.text = model.title
-        posterImageView.image = model.getPosterImage()
+        posterImageView.sd_setImage(with: URL(string: model.poster), placeholderImage: UIImage(systemName: "film.fill"))
         
         if model.year.isEmpty {
             yearLabel.isHidden = true

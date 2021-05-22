@@ -27,7 +27,7 @@ class MovieDetailViewController: UIViewController {
         
         movieData = movie.generatedFieldValues
         posterImageView.layer.cornerRadius = 16
-        posterImageView.image = movie.getPosterImage()
+        posterImageView.sd_setImage(with: URL(string: movie.poster), placeholderImage: UIImage(systemName: "film.fill"), options: [], progress: nil, completed: nil)
         tableView.register(UINib(nibName: "MovieDetailTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "MovieDetailTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self

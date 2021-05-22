@@ -128,13 +128,7 @@
                             <constraint firstAttribute="bottom" secondItem="YHk-mt-GHq" secondAttribute="bottom" id="Yon-Oz-ajB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Mooovies" id="5xc-yx-gLw">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bHt-5T-BZw">
-                            <connections>
-                                <action selector="didPressAdd:" destination="cFr-lY-0Iq" id="zah-Lb-rUN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Mooovies" id="5xc-yx-gLw"/>
                     <connections>
                         <outlet property="tableView" destination="YHk-mt-GHq" id="kbc-wG-Z1w"/>
                     </connections>
@@ -363,13 +357,7 @@
                             <constraint firstItem="hMX-ar-6k2" firstAttribute="leading" secondItem="99Y-Yr-ofu" secondAttribute="leading" id="vJf-DN-8De"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Instagram" id="0DZ-q8-9y4">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="PFK-3d-UmW">
-                            <connections>
-                                <action selector="didTapAdd:" destination="1hF-n7-OID" id="2W5-5e-JO8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Instagram" id="0DZ-q8-9y4"/>
                     <connections>
                         <outlet property="collectionView" destination="hMX-ar-6k2" id="w4y-if-rc3"/>
                     </connections>
