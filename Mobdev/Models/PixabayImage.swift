@@ -2,7 +2,7 @@
 //  PixabayImage.swift
 //  Mobdev
 //
-//  Created by Denys Danyliuk on 22.05.2021.
+//  Created by Denis on 22.05.2021.
 //
 
 import Foundation
